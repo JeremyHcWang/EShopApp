@@ -1,0 +1,10 @@
+﻿services:
+  customerapi:
+    image: customerapi
+    build:
+      context: .
+      dockerfile: CustomerService/CustomerAPI/Dockerfile
+    ports:
+      - '1432:80'
+    environment:
+      - ASPNETCORE_URLS=http://*:80
