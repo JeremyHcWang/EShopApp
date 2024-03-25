@@ -7,10 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Contracts\RepositoryInterfaces\" />
-      <Folder Include="Contracts\ServiceInterfaces\" />
-      <Folder Include="Models\Request\" />
-      <Folder Include="Models\Response\" />
+      <Folder Include="Services\" />
     </ItemGroup>
 
     <ItemGroup>
@@ -24,6 +21,10 @@
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\OrderAPI_ApplicationCore\OrderAPI_ApplicationCore.csproj" />
     </ItemGroup>
 
 </Project>

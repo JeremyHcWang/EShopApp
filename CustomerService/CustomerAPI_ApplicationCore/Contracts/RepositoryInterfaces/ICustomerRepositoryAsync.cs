@@ -1,5 +1,4 @@
 using CustomerAPI.ApplicationCore.Entities;
-using CustomerAPI.ApplicationCore.Models.Response;
 
 namespace CustomerAPI.ApplicationCore.Contracts.RepositoryInterfaces;
 

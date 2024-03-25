@@ -35,6 +35,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShipperAPI", "ShipperServic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShipperAPI_ApplicationCore", "ShipperService\ShipperAPI_ApplicationCore\ShipperAPI_ApplicationCore.csproj", "{06D90330-107F-4C35-9575-3B8108B05D0D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderAPI_Infrastructure", "OrderService\OrderAPI_Infrastructure\OrderAPI_Infrastructure.csproj", "{9303B932-03D0-4526-B563-BE603B0D266A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductAPI_Infrastructure", "ProductService\ProductAPI_Infrastructure\ProductAPI_Infrastructure.csproj", "{EEAC57FC-0175-418C-8BA9-916BB4E767BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShipperAPI_Infrastructure", "ShipperService\ShipperAPI_Infrastructure\ShipperAPI_Infrastructure.csproj", "{5DA72D8F-E248-4AFE-AC15-608E6E229FFB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +57,9 @@ Global
 		{C04E6C89-A5D1-422B-AC20-6ED3301C8FEB} = {6EB50F88-B889-4FBE-AABF-A1EA17FC151A}
 		{BC2887DC-5950-4289-A62C-F14B70A89A08} = {4AD32132-0C97-45F8-A861-CB356D254B7E}
 		{06D90330-107F-4C35-9575-3B8108B05D0D} = {4AD32132-0C97-45F8-A861-CB356D254B7E}
+		{9303B932-03D0-4526-B563-BE603B0D266A} = {A367AB5B-9DA8-4783-A0C3-271F94A9C883}
+		{EEAC57FC-0175-418C-8BA9-916BB4E767BD} = {6EB50F88-B889-4FBE-AABF-A1EA17FC151A}
+		{5DA72D8F-E248-4AFE-AC15-608E6E229FFB} = {4AD32132-0C97-45F8-A861-CB356D254B7E}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{883AC01D-6987-4F29-8FEE-547116F93A09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -93,5 +102,17 @@ Global
 		{06D90330-107F-4C35-9575-3B8108B05D0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06D90330-107F-4C35-9575-3B8108B05D0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06D90330-107F-4C35-9575-3B8108B05D0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9303B932-03D0-4526-B563-BE603B0D266A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9303B932-03D0-4526-B563-BE603B0D266A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9303B932-03D0-4526-B563-BE603B0D266A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9303B932-03D0-4526-B563-BE603B0D266A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEAC57FC-0175-418C-8BA9-916BB4E767BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEAC57FC-0175-418C-8BA9-916BB4E767BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEAC57FC-0175-418C-8BA9-916BB4E767BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEAC57FC-0175-418C-8BA9-916BB4E767BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DA72D8F-E248-4AFE-AC15-608E6E229FFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DA72D8F-E248-4AFE-AC15-608E6E229FFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DA72D8F-E248-4AFE-AC15-608E6E229FFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DA72D8F-E248-4AFE-AC15-608E6E229FFB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

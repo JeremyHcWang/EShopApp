@@ -21,16 +21,5 @@ public class CustomerRepositoryAsync : BaseRepositoryAsync<Customer>, ICustomerR
     {
         return await _dbSet.Where(c => c.City == city)
             .ToListAsync();
-        
-        // foreach (Customer c in result)
-        // {
-        //     CustomerResponseModel res = new CustomerResponseModel();
-        //     res.Id = c.CustomerId;
-        //     res.Name = c.Name;
-        //     res.Phone = c.Phone;
-        //     resList.Add(res);
-        // }
-        //
-        // return resList;
     }
 }
