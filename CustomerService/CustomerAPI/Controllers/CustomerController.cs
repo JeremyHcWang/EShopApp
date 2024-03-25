@@ -1,5 +1,6 @@
 using CustomerAPI.ApplicationCore.Contracts.RepositoryInterfaces;
 using CustomerAPI.ApplicationCore.Entities;
+using CustomerAPI.ApplicationCore.Models.Response;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CustomerAPI.Controllers;
@@ -8,16 +9,30 @@ namespace CustomerAPI.Controllers;
 [ApiController]
 public class CustomerController : ControllerBase
 {
-    private readonly ICustomerRepositoryAsync _customerRepositoryAsync;
+    private readonly ICustomerRepositoryAsync _customerRepository;
     public CustomerController(ICustomerRepositoryAsync customerRepository)
     {
-        _customerRepositoryAsync = customerRepository;
+        _customerRepository = customerRepository;
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetAllCustomer()
+    public async Task<IActionResult> GetAll()
     {
-        return Ok(await _customerRepositoryAsync.GetAllAsync());
+        return Ok(await _customerRepository.GetAllAsync());
+    }
+
+    [HttpGet("ByCity/{city}")]
+    public async Task<IActionResult> GetCustomerByCity(string city)
+    {
+        var customers = await _customerRepository.GetCustomerByCityAsync(city);
+        var response = customers.Select(c => new CustomerResponseModel()
+        {
+            Id = c.CustomerId,
+            Name = c.Name,
+            Phone = c.Phone
+        });
+
+        return Ok(response);
     }
 
     [HttpPost]
@@ -25,7 +40,7 @@ public class CustomerController : ControllerBase
     {
         try
         {
-            var result = await _customerRepositoryAsync.InsertAsync(obj);
+            var result = await _customerRepository.InsertAsync(obj);
             return Ok(result);
         }
         catch (Exception ex)

@@ -16,9 +16,9 @@ builder.Services.AddDbContext<EShopDbContext>(option =>
 {
     // if (!string.IsNullOrEmpty(builder.Configuration.GetConnectionString("EShopDbContextKey")))
     // without env
-    //option.UseSqlServer(builder.Configuration.GetConnectionString("EShopDbContextKey"));
+    option.UseSqlServer(builder.Configuration.GetConnectionString("EShopDbContextKey"));
     // with env
-    option.UseSqlServer(Environment.GetEnvironmentVariable("EShopDbContextKey"));
+    //option.UseSqlServer(Environment.GetEnvironmentVariable("EShopDbContextKey"));
 });
 
 var app = builder.Build();

@@ -10,9 +10,11 @@ public class Customer
     [Required (ErrorMessage ="Customer name is required")]
     public string Name { get; set; }
     [Column(TypeName="varchar(60)")]
-    public string? Address { get; set; }
+    [Required (ErrorMessage ="Customer address is required")]
+    public string Address { get; set; }
     [Column(TypeName="varchar(15)")]
-    public string? City { get; set; }
+    [Required (ErrorMessage ="Customer city is required")]
+    public string City { get; set; }
     [Column(TypeName="varchar(25)")]
     [Required (ErrorMessage ="Customer phone is required")]
     public string Phone { get; set; }
