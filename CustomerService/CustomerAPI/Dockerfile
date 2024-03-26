@@ -4,7 +4,7 @@ WORKDIR /app
 EXPOSE 8080
 EXPOSE 8081
 
-ENV EShopDbContextKey="Server=localhost; Database=EShopDB; User Id=sa; Password=Jeremy07014010; TrustServerCertificate=true"
+ENV EShopDbContextKey="Server=sqledgehw;Database=EShopDB;User Id=sa; Password=pwd123Strong; TrustServerCertificate=true;"
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release

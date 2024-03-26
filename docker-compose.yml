@@ -1,10 +1,37 @@
 ﻿services:
+  apigateway:
+    image: apigateway
+    build:
+      context: .
+      dockerfile: APIGatewayService/APIGateway/Dockerfile
+    environment:
+      - ASPNETCORE_URLS=http://*:80
+    networks:
+      - eshop-network
+    ports:
+      - '8002:80'
+  
   customerapi:
     image: customerapi
     build:
       context: .
       dockerfile: CustomerService/CustomerAPI/Dockerfile
-    ports:
-      - '1432:80'
     environment:
       - ASPNETCORE_URLS=http://*:80
+    networks:
+      - eshop-network
+  
+  orderapi:
+    image: orderapi
+    build:
+      context: .
+      dockerfile: OrderService/OrderAPI/Dockerfile
+    environment:
+      - ASPNETCORE_URLS=http://*:80
+    networks:
+      - eshop-network
+
+networks:
+  eshop-network:
+    external: true
+  

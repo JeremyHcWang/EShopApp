@@ -2,7 +2,7 @@
   "Routes": [
     {
       "UpstreamPathTemplate": "/api/customer",
-      "UpstreamHttpMethod": [ "Get", "Post", "Put"],
+      "UpstreamHttpMethod": [ "Get", "Post" ],
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -10,10 +10,41 @@
           "Port": 80
         }
       ],
-      "DownstreamPathTemplate": "/api/customer"
+      "DownstreamPathTemplate": "/api/customer",
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "PeriodTimespan": 60,
+        "Limit": 1
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/api/customer/{id}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "customerapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/customer/{id}"
+    },
+    {
+      "UpstreamPathTemplate": "/api/order/customer/{id}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "orderapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/order/customer/{id}"
     }
   ],
   "GlobalConfiguration": {
-    "BaseUrl": "https://localhost:8002"
+    "BaseUrl": "http://localhost:8002"
   }
 }
