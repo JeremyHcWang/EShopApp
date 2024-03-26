@@ -18,6 +18,7 @@
       dockerfile: CustomerService/CustomerAPI/Dockerfile
     environment:
       - ASPNETCORE_URLS=http://*:80
+      - EShopDbContextKey=${ESHOP_SQLSERVER_KEY}
     networks:
       - eshop-network
   
@@ -28,6 +29,7 @@
       dockerfile: OrderService/OrderAPI/Dockerfile
     environment:
       - ASPNETCORE_URLS=http://*:80
+      - EShopDbContextKey=Server=sqledgehw;Database=EShopDB;User Id=sa;Password=pwd123Strong;TrustServerCertificate=true
     networks:
       - eshop-network
 
