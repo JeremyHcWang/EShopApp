@@ -1,17 +1,6 @@
 ﻿services:
-  apigateway:
-    image: apigateway
-    build:
-      context: .
-      dockerfile: APIGatewayService/APIGateway/Dockerfile
-    environment:
-      - ASPNETCORE_URLS=http://*:80
-    networks:
-      - eshop-network
-    ports:
-      - '8002:80'
-  
   customerapi:
+    platform: linux/amd64
     image: customerapi
     build:
       context: .
@@ -21,17 +10,22 @@
       - EShopDbContextKey=${ESHOP_SQLSERVER_KEY}
     networks:
       - eshop-network
+    ports:
+      - '62122:80'
   
   orderapi:
+    platform: linux/amd64
     image: orderapi
     build:
       context: .
       dockerfile: OrderService/OrderAPI/Dockerfile
     environment:
       - ASPNETCORE_URLS=http://*:80
-      - EShopDbContextKey=Server=sqledgehw;Database=EShopDB;User Id=sa;Password=pwd123Strong;TrustServerCertificate=true
+      - EShopDbContextKey=${ESHOP_SQLSERVER_KEY}
     networks:
       - eshop-network
+    ports:
+      - '62123:80'
 
 networks:
   eshop-network:

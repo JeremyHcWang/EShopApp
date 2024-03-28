@@ -1,6 +1,6 @@
 namespace OrderAPI_ApplicationCore.Models.Response;
 
-public class CustomerResponseModel
+public class OrderCustomerDto
 {
     public int Id { get; set; }
     public string Name { get; set; }

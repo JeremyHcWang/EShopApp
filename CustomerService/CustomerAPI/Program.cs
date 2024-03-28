@@ -12,6 +12,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ICustomerRepositoryAsync, CustomerRepositoryAsync>();
+builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddDbContext<EShopDbContext>(option =>
 {
     // without env

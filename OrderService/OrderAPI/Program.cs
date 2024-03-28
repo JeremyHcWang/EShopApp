@@ -13,6 +13,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHttpClient();
 builder.Services.AddScoped<IOrderRepositoryAsync, OrderRepositoryAsync>();
+builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddDbContext<EShopDbContext>(option =>
 {
     // if (!string.IsNullOrEmpty(builder.Configuration.GetConnectionString("EShopDbContextKey")))

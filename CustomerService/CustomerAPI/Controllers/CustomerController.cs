@@ -1,7 +1,7 @@
+using AutoMapper;
 using CustomerAPI.ApplicationCore.Contracts.RepositoryInterfaces;
 using CustomerAPI.ApplicationCore.Entities;
 using CustomerAPI.ApplicationCore.Models.Response;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CustomerAPI.Controllers;
@@ -11,9 +11,12 @@ namespace CustomerAPI.Controllers;
 public class CustomerController : ControllerBase
 {
     private readonly ICustomerRepositoryAsync _customerRepository;
-    public CustomerController(ICustomerRepositoryAsync customerRepository)
+    private readonly IMapper _mapper;
+    
+    public CustomerController(ICustomerRepositoryAsync customerRepository, IMapper mapper)
     {
         _customerRepository = customerRepository;
+        _mapper = mapper;
     }
 
     [HttpGet]
@@ -22,35 +25,47 @@ public class CustomerController : ControllerBase
         return Ok(await _customerRepository.GetAllAsync());
     }
 
-    [HttpGet("{customerId}")]
-    public async Task<IActionResult> GetCustomerById(int customerId)
+    [HttpGet("getById")]
+    public async Task<IActionResult> GetCustomerById(int id)
     {
-        var customer = await _customerRepository.GetByIdAsync(customerId);
-        if (customer == null)
+        try
         {
-            return NotFound($"Customer with ID {customerId} was not found.");
+            var customer = await _customerRepository.GetByIdAsync(id);
+            if (customer == null)
+            {
+                return NotFound($"Customer with ID {id} was not found.");
+            }
+            // use AutoMapper to replace manual mapping
+            var customerResult = _mapper.Map<CustomerResponseModel>(customer);
+            // var response = new CustomerResponseModel()
+            // {
+            //     Id = customer.CustomerId,
+            //     Name = customer.Name,
+            //     Phone = customer.Phone
+            // };
+            return Ok(customerResult);
         }
-        var response = new CustomerResponseModel()
+        catch (Exception ex)
         {
-            Id = customer.CustomerId,
-            Name = customer.Name,
-            Phone = customer.Phone
-        };
-        return Ok(response);
+            return BadRequest(ex.Message);
+        }
+        
     }
     
-    [HttpGet("bycity/{city}")]
+    [HttpGet("city")]
     public async Task<IActionResult> GetCustomerByCity(string city)
     {
-        var customers = await _customerRepository.GetCustomerByCityAsync(city);
-        var response = customers.Select(c => new CustomerResponseModel()
+        try
         {
-            Id = c.CustomerId,
-            Name = c.Name,
-            Phone = c.Phone
-        });
+            var customers = await _customerRepository.GetCustomerByCityAsync(city);
+            var customerResult = _mapper.Map<IEnumerable<CustomerResponseModel>>(customers);
 
-        return Ok(response);
+            return Ok(customerResult);
+        }
+        catch (Exception ex)
+        { 
+            return BadRequest(ex.Message);
+        }
     }
 
     [HttpPost]
@@ -65,6 +80,5 @@ public class CustomerController : ControllerBase
         { 
             return BadRequest(ex.Message);
         }
-
     }
 }
