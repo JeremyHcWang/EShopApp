@@ -6,7 +6,6 @@
       context: .
       dockerfile: CustomerService/CustomerAPI/Dockerfile
     environment:
-      - ASPNETCORE_URLS=http://*:80
       - EShopDbContextKey=${ESHOP_SQLSERVER_KEY}
     networks:
       - eshop-network
@@ -20,7 +19,6 @@
       context: .
       dockerfile: OrderService/OrderAPI/Dockerfile
     environment:
-      - ASPNETCORE_URLS=http://*:80
       - EShopDbContextKey=${ESHOP_SQLSERVER_KEY}
     networks:
       - eshop-network
@@ -30,4 +28,3 @@
 networks:
   eshop-network:
     external: true
-  

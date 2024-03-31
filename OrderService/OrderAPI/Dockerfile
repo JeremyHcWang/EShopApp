@@ -1,15 +1,14 @@
-﻿FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
-USER $APP_UID
+﻿FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
-EXPOSE 8080
-EXPOSE 8081
+EXPOSE 80
+EXPOSE 443
 
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["OrderService/OrderAPI/OrderAPI.csproj", "OrderService/OrderAPI/"]
-COPY ["OrderService/OrderAPI_ApplicationCore/OrderAPI_ApplicationCore.csproj", "OrderService/OrderAPI_ApplicationCore/"]
 COPY ["OrderService/OrderAPI_Infrastructure/OrderAPI_Infrastructure.csproj", "OrderService/OrderAPI_Infrastructure/"]
+COPY ["OrderService/OrderAPI_ApplicationCore/OrderAPI_ApplicationCore.csproj", "OrderService/OrderAPI_ApplicationCore/"]
 RUN dotnet restore "OrderService/OrderAPI/OrderAPI.csproj"
 COPY . .
 WORKDIR "/src/OrderService/OrderAPI"
