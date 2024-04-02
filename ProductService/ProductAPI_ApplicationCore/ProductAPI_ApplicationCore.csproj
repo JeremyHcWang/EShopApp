@@ -7,7 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Contracts\RepositoryInterfaces\" />
       <Folder Include="Contracts\ServiceInterfaces\" />
       <Folder Include="Models\Request\" />
       <Folder Include="Models\Response\" />
